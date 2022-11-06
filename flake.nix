@@ -7,6 +7,11 @@
       default = {...}: {
         imports = [
           # Basic iso setup, gives us the ability to build an iso.
+          # This does not have all the setup from
+          # "${nixpkgs}/nixos/modules/profiles/installation-device.nix",
+          # which has both passwordless root login and ssh, which is fine if
+          # your computer is blank and getting set up, but problematic
+          # otherwise.
           "${nixpkgs}/nixos/modules/installer/cd-dvd/iso-image.nix"
           # Support a wide range of hardware, using the config used by the usb
           # installer
