@@ -37,7 +37,7 @@ TODO
 TODO
 
 Either:
-* nixos-rebuild build-vm
+* nixos-rebuild build-vm --flake .#default
 * qemu
 
 # How to use the base module
