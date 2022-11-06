@@ -31,7 +31,7 @@
         ];
       };
     };
-    ## TODO every system needs to have a user to boot into.
+
     nixosConfigurations = let nixosSystem =  nixpkgs.lib.nixosSystem; 
     in
     {
