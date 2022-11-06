@@ -5,8 +5,18 @@
 # * User, and autologin
 # * sudo
 # * wireless config
-{ ... }:
+{ modulesPath, ... }:
 {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/installer/scan/detected.nix")
+
+    # Allow "nixos-rebuild" to work by providing
+    # /etc/nixos/configuration.nix
+    (modulesPath + "/profiles/clone-config.nix")
+    # Set up channels for installation. Not needed for flakes.
+    (modulesPath + "/installer/cd-dvd/channel.nix")
+  ];
   config = {
     users.users.nixos = {
       isNormalUser = true;
