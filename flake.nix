@@ -24,6 +24,7 @@
       };
       full = {...}: {
         imports = [
+          # Add everything from the base version.
           self.nixosModules.default
           # Add common tools.
           ./modules/common.nix
