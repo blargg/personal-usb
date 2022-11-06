@@ -4,7 +4,7 @@
   outputs = { self, nixpkgs }: {
     nixosModules = {
       # Basic module, this will allow you to create a bootable iso, and provide some basic utilities.
-      default = {...}: {
+      base = {...}: {
         imports = [
           # Basic iso setup, gives us the ability to build an iso.
           # This does not have all the setup from
@@ -22,10 +22,10 @@
           ./modules/basic.nix
         ];
       };
-      full = {...}: {
+      default = {...}: {
         imports = [
           # Add everything from the base version.
-          self.nixosModules.default
+          self.nixosModules.base
           # Add common tools.
           ./modules/common.nix
         ];
@@ -38,17 +38,17 @@
       # Build:
       # TODO replace this with the github reference.
       # nix build .#nixosConfigurations.usbkey.config.system.build.isoImage
-      usbkey = nixosSystem {
+      base = nixosSystem {
         system = "x86_64-linux";
         modules = [ 
-          self.nixosModules.default
+          self.nixosModules.base
         ];
       };
       # Full system. Never leave home without it.
-      full = nixosSystem {
+      default = nixosSystem {
         system = "x86_64-linux";
         modules = [ 
-          self.nixosModules.full
+          self.nixosModules.default
         ];
       };
     };
