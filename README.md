@@ -52,3 +52,5 @@ Either:
 [] install nmap, and short guide to use it.
 [] Update the nixosSystems to support multiple system types.
 [] Provide option to set the starting shell.
+[] Support for wireless setup, and usage instructions.
+[] On usb documentation for common use cases.
