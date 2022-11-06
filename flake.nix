@@ -41,8 +41,6 @@
         system = "x86_64-linux";
         modules = [ 
           self.nixosModules.default
-          # TODO get something like this.
-          # ./machines/usbkey
         ];
       };
       # Full system. Never leave home without it.
