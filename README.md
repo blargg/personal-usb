@@ -50,3 +50,5 @@ Either:
 [] search for all previous attempts, see what they can offer.
 [] address all todos in the doc.
 [] install nmap, and short guide to use it.
+[] Update the nixosSystems to support multiple system types.
+[] Provide option to set the starting shell.

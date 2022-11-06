@@ -3,6 +3,7 @@
 
   outputs = { self, nixpkgs }: {
     nixosModules = {
+      # Basic module, this will allow you to create a bootable iso, and provide some basic utilities.
       default = {...}: {
         imports = [
           # Basic iso setup, gives us the ability to build an iso.
@@ -12,6 +13,13 @@
           "${nixpkgs}/nixos/modules/profiles/all-hardware.nix"
           # Install tools useful for install and rescue
           "${nixpkgs}/nixos/modules/profiles/base.nix"
+        ];
+      };
+      full = {...}: {
+        imports = [
+          self.nixosModules.default
+          # Add common tools.
+          ./modules/common.nix
         ];
       };
     };
@@ -28,6 +36,13 @@
           self.nixosModules.default
           # TODO get something like this.
           # ./machines/usbkey
+        ];
+      };
+      # Full system. Never leave home without it.
+      full = nixosSystem {
+        system = "x86_64-linux";
+        modules = [ 
+          self.nixosModules.full
         ];
       };
     };
