@@ -18,6 +18,8 @@
           "${nixpkgs}/nixos/modules/profiles/all-hardware.nix"
           # Install tools useful for install and rescue
           "${nixpkgs}/nixos/modules/profiles/base.nix"
+          # Basic things needed to operate the system.
+          ./modules/basic.nix
         ];
       };
       full = {...}: {
